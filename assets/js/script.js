@@ -1,3 +1,6 @@
+var timerRemainingEl = document.getElementById(timeRemaining);
+var playerName = document.querySelector("player-name")
+
 //setting the framework for the quiz questions
 var questions = [
     {
@@ -29,17 +32,37 @@ var optionsContainer = document.getElementById('options')
 
 var questionIndex = 0
 var score = 0
-var timer = 60
+var timeRemaining = 60
 
-//start quiz button function
+//start quiz function
 function startQuiz() {
     startBtn.setAttribute('class', 'hidden')
     renderQuestion()
+
+    //timer countdown start and clear at time end
+    var timeInterval = setInterval(function () {
+        seconds = parseInt(timeRemaining / 60, 10);
+        timeRemaining--;
+        quizTimer.textContent = "Time Remaining: " + timeRemaining;
+
+        if (timeRemaining === 0) {
+            clearInterval(timeInterval);
+            results();
+        }
+    }, 1000);
 }
 
-function getUser() {
-    // get username, add the users name and score to an object and push the object into local storage and then send the user to the highscores page
+//player score/highscore
+function results() {
+    clearInterval(timeInterval);
+    getUser();
+
+    
 }
+// get username, add the users name and score to an object and push the object into local storage and then send the user to the highscores page
+function getUser() {
+    playerName: playerNameInput.value.trim()
+};
 
 //question rendering function
 function renderQuestion() {
@@ -53,23 +76,23 @@ function renderQuestion() {
     var questionEl = document.createElement('h1')
     questionEl.textContent = questions[questionIndex].question
     questionContainer.append(questionEl)
-//this loop will render questions through the length of the choices
+//this loop will render questions
     for (var i = 0; i < questions[questionIndex].choices.length; i++) {
         var listEl = document.createElement('li')
         listEl.setAttribute('id', questions[questionIndex].choices[i])
         listEl.textContent = questions[questionIndex].choices[i]
         optionsContainer.append(listEl)
-
+//rewards and penalties for correct and incorrect answers
         listEl.addEventListener('click', function (event) {
             if (event.target.id === questions[questionIndex].correct) {
                 console.log('correct')
-                score += 20;
+                timeRemaining += 10;
             } else {
                 console.log('incorrect')
-                time -= 10;
+                timeRemaining -= 10;
             }
             questionIndex++
-            renderQuestion()
+            renderQuestion();
         })
     }
 }
