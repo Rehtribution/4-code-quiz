@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href="./assets/css/style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Document</title>
 </head>
+
 <body>
-    
-    <div id="highscore"><a href='#'>Highscore</a></div>
+    <!--should have a startpage that shows the quiz title/description, the start button and the highscore button that navigates to the previous highscores-->
+    <section id = "startingPage">
+        <h1>This is the quiz title</h1>
+        <h3>This is the quiz description</h3>
+
+        <button id="start-btn">Start Quiz</button>
+        <button id = "highscore-btn">highscore</button> <!--needs to redirect on click-->
+        
+    </section>
+    <!--quiz timer and quesitons should display after start button is pressed-->
     <div id="quizTimer">60 Second Countdown</div>
     <div id="question"></div>
     <ul id="options"></ul>
-    <button id="start-btn">Start Quiz</button>
 
-    <script src='./assets/js/script.js'></script>
+
+    <!--endgame should request player initials and display score after time OR questions run out, and have a replay button--><!--maybe seperate user input and results display-->
+    <!--restrict number of highscores saved?-->
+    <div id="score">
+        <input type="text" size="20" placeholder="Name or initials here" name="name" id="name" />
+        <button id="commitName">CONFIRM</button>
+    </div>
+
+
+    <script src="./assets/js/script.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
-var timerRemainingEl = document.getElementById(timeRemaining);
-var playerName = document.querySelector("player-name")
+var timeRemainingEl = document.getElementById(timeRemaining);
+var playerName = document.querySelector("player-name");
+var scoreEl = document.getElementById("score");
 
 //setting the framework for the quiz questions
 var questions = [
@@ -34,7 +35,7 @@ var questionIndex = 0
 var score = 0
 var timeRemaining = 60
 
-//start quiz function
+//start quiz function on start button click, render questions and start countdown
 function startQuiz() {
     startBtn.setAttribute('class', 'hidden')
     renderQuestion()
@@ -46,29 +47,31 @@ function startQuiz() {
         quizTimer.textContent = "Time Remaining: " + timeRemaining;
 
         if (timeRemaining === 0) {
+            //stop the timer and display player score/highscore
             clearInterval(timeInterval);
-            results();
+            getUser();
         }
     }, 1000);
 }
 
 //player score/highscore
-function results() {
-    clearInterval(timeInterval);
-    getUser();
+// function results() {
+//     clearInterval(timeInterval);
+//     getUser();
 
     
-}
+// }
 // get username, add the users name and score to an object and push the object into local storage and then send the user to the highscores page
 function getUser() {
-    playerName: playerNameInput.value.trim()
-};
+    playerName.value = "",
+    scoreEl.innerHTML = "You got " + score + "of" + questions.length;
+}
 
 //question rendering function
 function renderQuestion() {
     if (questionIndex > questions.length) {
         // call getUser function 
-        return
+    //    return
     }
 
     questionContainer.textContent = ""
@@ -93,9 +96,12 @@ function renderQuestion() {
             }
             questionIndex++
             renderQuestion();
+
+            //need to stop the time when questions run out
         })
     }
 }
+
 
 
 startBtn.addEventListener('click', startQuiz)
