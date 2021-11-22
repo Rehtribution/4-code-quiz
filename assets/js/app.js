@@ -1,7 +1,3 @@
-var timeRemainingEl = document.getElementById(timeRemaining);
-var playerName = document.querySelector("player-name");
-var scoreEl = document.getElementById("score");
-
 //setting the framework for the quiz questions
 var questions = [
     {
@@ -30,48 +26,53 @@ var questions = [
 var startBtn = document.getElementById('start-btn')
 var questionContainer = document.getElementById('question')
 var optionsContainer = document.getElementById('options')
+var inputContainer = document.getElementById('user')
 
 var questionIndex = 0
-var score = 0
+var currentScore = 0
 var timeRemaining = 60
 
-//start quiz function on start button click, render questions and start countdown
 function startQuiz() {
     startBtn.setAttribute('class', 'hidden')
     renderQuestion()
+}
 
-    //timer countdown start and clear at time end
-    var timeInterval = setInterval(function () {
-        seconds = parseInt(timeRemaining / 60, 10);
-        timeRemaining--;
-        quizTimer.textContent = "Time Remaining: " + timeRemaining;
+function endQuiz() {
+    questionContainer.textContent = ""
+    optionsContainer.textContent = ""
+    var input = document.createElement('input')
+    input.setAttribute('placeholder', 'Please Enter Your Name')
+    inputContainer.append(input)
 
-        if (timeRemaining === 0) {
-            //stop the timer and display player score/highscore
-            clearInterval(timeInterval);
-            getUser();
+    var btn = document.createElement('button')
+    btn.textContent = 'Submit'
+    inputContainer.append(btn)
+
+    btn.addEventListener('click', function(e) {
+        e.preventDefault()
+        var currentName = input.value
+
+        var storage = JSON.parse(localStorage.getItem('quizScore'))
+        if (storage === null) {
+            storage = []
         }
-    }, 1000);
+
+        var currentUser = {
+            name: currentName,
+            score: currentScore
+        }
+
+        storage.push(currentUser)
+        localStorage.setItem('quizScore', JSON.stringify(storage))
+    })
 }
 
-//player score/highscore
-// function results() {
-//     clearInterval(timeInterval);
-//     getUser();
-
-    
-// }
-// get username, add the users name and score to an object and push the object into local storage and then send the user to the highscores page
-function getUser() {
-    playerName.value = "",
-    scoreEl.innerHTML = "You got " + score + "of" + questions.length;
-}
-
-//question rendering function
 function renderQuestion() {
-    if (questionIndex > questions.length) {
+    if (questionIndex > questions.length - 1) {
         // call getUser function 
-    //    return
+        console.log('over');
+        endQuiz()
+        return
     }
 
     questionContainer.textContent = ""
@@ -89,7 +90,7 @@ function renderQuestion() {
         listEl.addEventListener('click', function (event) {
             if (event.target.id === questions[questionIndex].correct) {
                 console.log('correct')
-                timeRemaining += 10;
+                currentScore += 25;
             } else {
                 console.log('incorrect')
                 timeRemaining -= 10;
@@ -101,7 +102,5 @@ function renderQuestion() {
         })
     }
 }
-
-
 
 startBtn.addEventListener('click', startQuiz)
