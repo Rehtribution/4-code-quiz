@@ -27,17 +27,44 @@ var startBtn = document.getElementById('start-btn')
 var questionContainer = document.getElementById('question')
 var optionsContainer = document.getElementById('options')
 var inputContainer = document.getElementById('user')
+var highScoreBtn = document.getElementById('highscore-btn')
 
 var questionIndex = 0
 var currentScore = 0
 var timeRemaining = 60
+var timeInterval = null
 
 function startQuiz() {
     startBtn.setAttribute('class', 'hidden')
+    highScoreBtn.setAttribute('class', 'hidden')
+
     renderQuestion()
+
+    //timer countdown start and clear at time end
+    timeInterval = setInterval(function () {
+        seconds = parseInt(timeRemaining / 60, 10);
+        timeRemaining--;
+        quizTimer.textContent = "Time Remaining: " + timeRemaining;
+
+        if (timeRemaining === 0) {
+            //stop the timer and display player score/highscore
+            endQuiz();
+        }
+    }, 1000);
+
+}
+
+function stopTimer() {
+    //reset time remaining to 0
+    if (timeRemaining <= 0) {
+        timeRemaining = 0;
+    }
+    quizTimer.textContent = "Time Remaining: " + timeRemaining;
+    clearInterval(timeInterval)
 }
 
 function endQuiz() {
+    stopTimer()
     questionContainer.textContent = ""
     optionsContainer.textContent = ""
     var input = document.createElement('input')
@@ -48,7 +75,7 @@ function endQuiz() {
     btn.textContent = 'Submit'
     inputContainer.append(btn)
 
-    btn.addEventListener('click', function(e) {
+    btn.addEventListener('click', function (e) {
         e.preventDefault()
         var currentName = input.value
 
@@ -69,7 +96,7 @@ function endQuiz() {
 
 function renderQuestion() {
     if (questionIndex > questions.length - 1) {
-        // call getUser function 
+        // call getUser function
         console.log('over');
         endQuiz()
         return
@@ -80,13 +107,13 @@ function renderQuestion() {
     var questionEl = document.createElement('h1')
     questionEl.textContent = questions[questionIndex].question
     questionContainer.append(questionEl)
-//this loop will render questions
+    //this loop will render questions
     for (var i = 0; i < questions[questionIndex].choices.length; i++) {
         var listEl = document.createElement('li')
         listEl.setAttribute('id', questions[questionIndex].choices[i])
         listEl.textContent = questions[questionIndex].choices[i]
         optionsContainer.append(listEl)
-//rewards and penalties for correct and incorrect answers
+        //rewards and penalties for correct and incorrect answers
         listEl.addEventListener('click', function (event) {
             if (event.target.id === questions[questionIndex].correct) {
                 console.log('correct')
@@ -97,8 +124,6 @@ function renderQuestion() {
             }
             questionIndex++
             renderQuestion();
-
-            //need to stop the time when questions run out
         })
     }
 }
