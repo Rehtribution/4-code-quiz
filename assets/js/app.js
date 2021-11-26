@@ -1,3 +1,4 @@
+
 //setting the framework for the quiz questions
 var questions = [
     {
@@ -54,6 +55,7 @@ function startQuiz() {
 
 }
 
+
 function stopTimer() {
     //reset time remaining to 0
     if (timeRemaining <= 0) {
@@ -74,6 +76,8 @@ function endQuiz() {
     var btn = document.createElement('button')
     btn.textContent = 'Submit'
     inputContainer.append(btn)
+
+    //need replay button to retake the quiz
 
     btn.addEventListener('click', function (e) {
         e.preventDefault()
@@ -129,3 +133,4 @@ function renderQuestion() {
 }
 
 startBtn.addEventListener('click', startQuiz)
+//highScoreBtn.addEventListener('click', highScore)
