@@ -9,23 +9,34 @@
     <title>Highscores</title>
 </head>
 
+<!--main content start-->
 <body>
+    <!--Highscores page displays the button to redirect to the home page and to clear the scores stored in local storage as well as display the current highscores-->
     <div class="container">
         <section id="highscoresPage">
             <h1>Quiz Highscores</h1>
             <h3>These are the top scores of the week</h3>
-            <!--redirects back to the starting page-->
+            <!--redirects back to the starting page on click-->
             <button id="start-btn" onclick="location.href='index.html';">Homepage</button>
+            <!--clears saved scores on click and refreshes the page-->
             <button id="clearHighscore" onclick="clearScore()">Clear Highscores</button>
+            <!--current saved scores-->
             <table id="results">
                 <tr>
-                    <th>Name</th>
+                    <th>Name---</th>
                     <th>Score</th>
                 </tr>
             </table>
-            <script src="assets\js\highscore.js"></script>
         </section>
     </div>
-</body>
 
+    <script src="assets\js\highscore.js"></script>
+</body>
+<!--main content end-->
+
+<!--footer-->
+<footer>
+    <h4>CodeQuizChallenge4</h4><a href="README.md">ReadMe</a>
+    &copy; 2021 Rehtribution
+</footer>
 </html>

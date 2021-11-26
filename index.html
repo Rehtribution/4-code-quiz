@@ -9,16 +9,18 @@
     <title>Document</title>
 </head>
 
+<!--main content start-->
 <body>
     <!--should have a startpage that shows the quiz title/description, the start button and the highscore button that navigates to the previous highscores-->
-    <section id = "startingPage">
+    <section id="startingPage">
         <h1>This is the JavaScript code quiz challenge</h1>
         <h3>Take this 1 minute quiz to test your knowledge on JavaScript!</h3>
-
+        
+        <!--start button-->
         <button id="start-btn">Start Quiz</button>
         <!--redirects to highscores page on click-->
-        <button id = "highscore-btn" onclick="location.href='highscore.html';">highscore</button> 
-        
+        <button id="highscore-btn" onclick="location.href='highscore.html';">Highscores</button>
+
     </section>
     <!--quiz timer and quesitons should display after start button is pressed-->
     <div id="quizTimer">60 Second Countdown</div>
@@ -28,16 +30,14 @@
         <form id="user"></form>
     </div>
 
-
-    <!--endgame should request player initials and display score after time OR questions run out, and have a replay button--><!--maybe seperate user input and results display-->
-    <!--restrict number of highscores saved?-->
-    <!-- <div id="score">
-        <input type="text" size="20" placeholder="Name or initials here" name="name" id="name" />
-        <button id="commitName">CONFIRM</button>
-    </div> -->
-
- 
     <script src="./assets/js/app.js"></script>
 </body>
+<!--main content end-->
+
+<!--footer-->
+<footer>
+    <h4>CodeQuizChallenge4</h4><a href="README.md">ReadMe</a>
+    &copy; 2021 Rehtribution
+</footer>
 
 </html>

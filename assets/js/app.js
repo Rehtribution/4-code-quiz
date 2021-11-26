@@ -72,7 +72,7 @@ function endQuiz() {
     optionsContainer.textContent = ""
     //input name
     var input = document.createElement('input')
-    input.setAttribute('placeholder', 'Please Enter Your Name')
+    input.setAttribute('placeholder', 'Enter Your Name To See Scores')
     inputContainer.append(input)
     //submit
     var btn = document.createElement('button')
