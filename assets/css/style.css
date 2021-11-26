@@ -5,11 +5,8 @@
 :root {
     --primary: rgb(234, 240, 206);
     --secondary: #497980;
-    --tertiary: rgb(192, 246, 253);
-    --grey: #333;
-    font-size: 70%;
+    --tertiary: rgb(107, 112, 92);
 }
-
 
 .hidden {
     display: none;
@@ -33,7 +30,7 @@ button {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: var(--primary);
     border-radius: 10px;
-    border: 3px double #cccccc;
+    border: 3px double var(--tertiary);
     color: var(--secondary);
     text-align: center;
     font-size: x-large;
@@ -58,9 +55,9 @@ input {
     align-items: center;
 }
 
-
 footer {
     position: fixed;
+    width: 100%;
     bottom: 0;
-    align-items: center;
+    text-align: center;
 }
