@@ -1,4 +1,3 @@
-
 //setting the framework for the quiz questions
 var questions = [
     {
@@ -35,6 +34,7 @@ var currentScore = 0
 var timeRemaining = 60
 var timeInterval = null
 
+//starts the quiz and hides buttons. runs the render questions function and begins the countdown timer
 function startQuiz() {
     startBtn.setAttribute('class', 'hidden')
     highScoreBtn.setAttribute('class', 'hidden')
@@ -55,7 +55,7 @@ function startQuiz() {
 
 }
 
-
+//stops the timer at 0
 function stopTimer() {
     //reset time remaining to 0
     if (timeRemaining <= 0) {
@@ -65,39 +65,51 @@ function stopTimer() {
     clearInterval(timeInterval)
 }
 
+//end quiz will run the stop timer function, create an input variable and a submit button which will collect the player name. on submit click it will run the save function and navigate to another page.
 function endQuiz() {
     stopTimer()
     questionContainer.textContent = ""
     optionsContainer.textContent = ""
+    //input name
     var input = document.createElement('input')
     input.setAttribute('placeholder', 'Please Enter Your Name')
     inputContainer.append(input)
-
+    //submit
     var btn = document.createElement('button')
     btn.textContent = 'Submit'
     inputContainer.append(btn)
 
-    //need replay button to retake the quiz
-
     btn.addEventListener('click', function (e) {
         e.preventDefault()
-        var currentName = input.value
-
-        var storage = JSON.parse(localStorage.getItem('quizScore'))
-        if (storage === null) {
-            storage = []
-        }
-
-        var currentUser = {
-            name: currentName,
-            score: currentScore
-        }
-
-        storage.push(currentUser)
-        localStorage.setItem('quizScore', JSON.stringify(storage))
+        saveHighScore(input)
+        navigateToHighScorePage()
     })
 }
 
+//this section will collect the players previous input from the endQuiz function and assigns it to the current name variable then it merges the name and score variables into the new current user variable before pushing it into the local storage.
+function saveHighScore(input) {
+    var currentName = input.value
+
+    var storage = JSON.parse(localStorage.getItem('quizScore'))
+    if (storage === null) {
+        storage = []
+    }
+
+    var currentUser = {
+        name: currentName,
+        score: currentScore
+    }
+
+    storage.push(currentUser)
+    localStorage.setItem('quizScore', JSON.stringify(storage))
+}
+
+//this links the second html created for the hiighscores page
+function navigateToHighScorePage() {
+    location.href = "highscore.html";
+}
+
+//renders questions and collects the players score
 function renderQuestion() {
     if (questionIndex > questions.length - 1) {
         // call getUser function
@@ -132,5 +144,5 @@ function renderQuestion() {
     }
 }
 
+//starts the quiz by running the start quiz function
 startBtn.addEventListener('click', startQuiz)
-//highScoreBtn.addEventListener('click', highScore)
