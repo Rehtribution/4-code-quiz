@@ -1,24 +1,24 @@
 //setting the framework for the quiz questions
 var questions = [
     {
-        question: "this is question 1",
-        choices: ["option 1 of 1", "option 2 of 1", "option 3 of 1", "option 4 of 1"],
-        correct: "option 1 of 1"
+        question: "What are the two types of JavaScript values?",
+        choices: ["Fixed and Variable values", "Fixed and Fluid values", "Variable and Static values", "Number and Variable values"],
+        correct: "Fixed and Variable values"
     },
     {
-        question: "this is question 2",
-        choices: ["option 1 of 2", "option 2 of 2", "option 3 of 2", "option 4 of 2"],
-        correct: "option 2 of 2"
+        question: "What is a JavaScript Expression?",
+        choices: ["A mathmatical function", "A shorter way to commuicate meaning", "A function", "A combination of values, variables, and operators, which computes to a value"],
+        correct: "A combination of values, variables, and operators, which computes to a value"
     },
     {
-        question: "this is question 3",
-        choices: ["option 1 of 3", "option 2 of 3", "option 3 of 3", "option 4 of 3"],
-        correct: "option 3 of 3"
+        question: "Which of the following is NOT treated as a comment in JavaScript?",
+        choices: ["//", "<!---->", "*/", "/*"],
+        correct: "<!---->"
     },
     {
-        question: "this is question 4",
-        choices: ["option 1 of 4", "option 2 of 4", "option 3 of 4", "option 4 of 4"],
-        correct: "option 4 of 4"
+        question: "What are JavaScript Identifiers used for?",
+        choices: ["Identifying different lines of code", "Marking comments in code", "Naming variables and keywords, and functions, and labels", "Listing different kinds of potato salads"],
+        correct: "Naming variables and keywords, and functions, and labels"
     },
 ]
 

@@ -10,20 +10,22 @@
 </head>
 
 <body>
-    <section id="highscoresPage">
-        <h1>Quiz Highscores</h1>
-        <h3>These are the top scores of the week</h3>
-        <!--redirects back to the starting page-->
-        <button id="start-btn" onclick="location.href='index.html';">Homepage</button>
-        <table id="results">
-            <tr>
-                <th>Name</th>
-                <th>Score</th>
-            </tr>
-        </table>
-        <script src="assets\js\highscore.js"></script>
-    </section>
-
+    <div class="container">
+        <section id="highscoresPage">
+            <h1>Quiz Highscores</h1>
+            <h3>These are the top scores of the week</h3>
+            <!--redirects back to the starting page-->
+            <button id="start-btn" onclick="location.href='index.html';">Homepage</button>
+            <button id="clearHighscore" onclick="clearScore()">Clear Highscores</button>
+            <table id="results">
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+            </table>
+            <script src="assets\js\highscore.js"></script>
+        </section>
+    </div>
 </body>
 
 </html>

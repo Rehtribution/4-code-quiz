@@ -6,7 +6,11 @@ function popHighscores() {
     var scoreTableEl = document.querySelector('.scoretable');
 
     const results = document.querySelector('#results')
-
+    //sorts the highscores
+    highscores.sort(function (a, b) {
+        return b.score - a.score;
+    });
+    
     for (i = 0; i < highscores.length; i++) {
         //create a results table
         var newTableRow = document.createElement("tr");
@@ -22,6 +26,14 @@ function popHighscores() {
     }
 }
 
+//clears scores from local storage
+function clearScore(){
+    window.localStorage.clear();
+    highscoreDisplayName.textContent = "";
+    highscoreDisplayScore.textContent = "";
+}
+
 console.log("scores")
+
 
 popHighscores()
