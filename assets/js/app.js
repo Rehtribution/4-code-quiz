@@ -125,7 +125,7 @@ function renderQuestion() {
     questionContainer.append(questionEl)
     //this loop will render questions
     for (var i = 0; i < questions[questionIndex].choices.length; i++) {
-        var listEl = document.createElement('li')
+        var listEl = document.createElement('button')
         listEl.setAttribute('id', questions[questionIndex].choices[i])
         listEl.textContent = questions[questionIndex].choices[i]
         optionsContainer.append(listEl)
