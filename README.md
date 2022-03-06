@@ -4,8 +4,9 @@
 Code Quiz is a timed quiz on JavaScript fundamentals that stores high scores that can gauge one's progress compared to their peers.
 
 
-This is the fourth Challenge homework assignment and will meet the acceptance criteria listed below:
+<h2 align="center">User Story</h2>
 
+```
 - GIVEN I am taking a code quiz
 - WHEN I click the start button
 - THEN a timer starts and I am presented with a question
@@ -17,7 +18,7 @@ This is the fourth Challenge homework assignment and will meet the acceptance cr
 - THEN the game is over
 - WHEN the game is over
 - THEN I can save my initials and score
-
+```
 
 ## Screenshot
 
@@ -34,5 +35,5 @@ This is the fourth Challenge homework assignment and will meet the acceptance cr
 
 ## Author
 
-- [Portfolio] https://rehtribution.github.io/portfolio/
+[![GitHub Portfolio -> - Rehtribution](https://img.shields.io/badge/GitHub_Portfolio_-->-Rehtribution-darkred?style=for-the-badge)](https://github.com/Rehtribution)
 
